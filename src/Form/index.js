@@ -5,8 +5,6 @@ import SlayerMaster from "./SlayerMaster";
 import Levels from "./Levels";
 import Quests from "./Quests";
 import SlayerUnlocks from "./SlayerUnlocks";
-import BlockList from "./BlockList";
-import DesiredTasks from "./DesiredTasks";
 
 const Form = () => {
     return (
