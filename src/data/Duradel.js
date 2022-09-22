@@ -132,8 +132,8 @@ export const Duradel = {
         {
           name: 'Bloodveld',
           weight: 8,
-          combatLevel: 50,
-          slayerLevel: 80,
+          combatLevel: 80,
+          slayerLevel: 50,
           slayerUnlocks: [],
           questRequirements: []
         },

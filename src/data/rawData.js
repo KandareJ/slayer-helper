@@ -59,7 +59,7 @@ Nechryael,9,85,80,,Priest in Peril
 Smoke devils,9,85,93,,
 Aviansies,8,,,Watch the birdie,
 Black demons,8,80,,,
-Bloodveld,8,50,80,,
+Bloodveld,8,80,50,,
 Drakes,8,,84,,
 Gargoyles,8,80,75,,Priest in Peril
 Red dragons,8,,,Seeing red,Dragon Slayer I
