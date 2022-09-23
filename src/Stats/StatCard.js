@@ -36,6 +36,10 @@ const StatCard = () => {
     totalWeight = (totalWeight) ? totalWeight : 1;
     const pointsPerTask = (master) ? SLAYER_DATA[master].points : 0;
 
+    const calculatePtsPerTask = (perTask) => {
+        return (favoriteWeight / totalWeight * perTask) - (skipsWeight / totalWeight * 30)
+    }
+
     return (
         <div style={listsStyle}>
             <List>
@@ -66,7 +70,16 @@ const StatCard = () => {
                             <ListItemText>Pts per task</ListItemText>
                         </Grid>
                         <Grid xs={4}>
-                            <ListItemText>{((favoriteWeight / totalWeight * pointsPerTask) - (skipsWeight / totalWeight * 30)).toFixed(2)}</ListItemText>
+                            <ListItemText>{calculatePtsPerTask(pointsPerTask).toFixed(2)}</ListItemText>
+                        </Grid>
+                    </Grid>
+
+                    <Grid container spacing={2}>
+                        <Grid xs={8}>
+                            <ListItemText>Pts per ten</ListItemText>
+                        </Grid>
+                        <Grid xs={4}>
+                            <ListItemText>{(calculatePtsPerTask(pointsPerTask) * 9 + calculatePtsPerTask(pointsPerTask * 5)).toFixed(2)}</ListItemText>
                         </Grid>
                     </Grid>
                 </div>

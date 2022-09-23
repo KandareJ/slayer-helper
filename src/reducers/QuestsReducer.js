@@ -1,18 +1,25 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { QUESTS_KEY, readFromStorageOrDefault, writeToStorage } from '../LocalStorage/LocalStorage';
 
 const questsSlice = createSlice({
     name: 'quests',
     initialState: {
-        value: []
+        value: readFromStorageOrDefault(QUESTS_KEY, [])
     },
     reducers: {
         addQuest: (state, action) => {
-            state.value = [...state.value, action.payload];
+            const quests = [...state.value, action.payload];
+
+            writeToStorage(QUESTS_KEY, quests);
+            state.value = quests;
         },
         removeQuest: (state, action) => {
-            state.value = state.value.filter((task) => {
+            const quests = state.value.filter((task) => {
                 return task !== action.payload;
-            })
+            });
+
+            writeToStorage(QUESTS_KEY, quests);
+            state.value = quests;
         }
     }
 });

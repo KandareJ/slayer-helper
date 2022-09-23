@@ -1,18 +1,25 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { BLOCK_LIST_KEY, readFromStorageOrDefault, writeToStorage } from '../LocalStorage/LocalStorage';
 
 const blockListSlice = createSlice({
     name: 'blockList',
     initialState: {
-        value: []
+        value: readFromStorageOrDefault(BLOCK_LIST_KEY, [])
     },
     reducers: {
         addBlockList: (state, action) => {
-            state.value = [...state.value, action.payload];
+            const blockList = [...state.value, action.payload];
+
+            writeToStorage(BLOCK_LIST_KEY, blockList);
+            state.value = blockList;
         },
         removeBlockList: (state, action) => {
-            state.value = state.value.filter((task) => {
+            const blockList = state.value.filter((task) => {
                 return task !== action.payload;
-            })
+            });
+
+            writeToStorage(BLOCK_LIST_KEY, blockList);
+            state.value = blockList
         }
     }
 });

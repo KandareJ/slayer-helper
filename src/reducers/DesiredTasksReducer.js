@@ -1,18 +1,26 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+import { DESIRED_TASKS_KEY, readFromStorageOrDefault, writeToStorage } from '../LocalStorage/LocalStorage';
+
 const desiredTaskSlice = createSlice({
     name: 'desiredTasks',
     initialState: {
-        value: []
+        value: readFromStorageOrDefault(DESIRED_TASKS_KEY, [])
     },
     reducers: {
         addDesiredTask: (state, action) => {
-            state.value = [...state.value, action.payload];
+            const desiredTasks = [...state.value, action.payload];
+            writeToStorage(DESIRED_TASKS_KEY, desiredTasks);
+
+            state.value = desiredTasks;
         },
         removeDesiredTask: (state, action) => {
-            state.value = state.value.filter((task) => {
+            const desiredTasks = state.value.filter((task) => {
                 return task !== action.payload;
-            })
+            });
+            writeToStorage(DESIRED_TASKS_KEY, desiredTasks);
+
+            state.value = desiredTasks;
         }
     }
 });

@@ -1,12 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { readIntFromStorageOrDefault, writeToStorage, SLAYER_LEVEL_KEY } from '../LocalStorage/LocalStorage';
 
 const slayerLevelSlice = createSlice({
     name: 'slayerLevel',
     initialState: {
-        value: ''
+        value: readIntFromStorageOrDefault(SLAYER_LEVEL_KEY, '')
     },
     reducers: {
         setSlayerLevel: (state, action) => {
+            writeToStorage(SLAYER_LEVEL_KEY, action.payload);
             state.value = action.payload;
         }
     }

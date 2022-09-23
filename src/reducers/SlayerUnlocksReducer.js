@@ -1,18 +1,25 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { SLAYER_UNLOCKS_KEY, readFromStorageOrDefault, writeToStorage } from '../LocalStorage/LocalStorage';
 
 const slayerUnlocksSlice = createSlice({
     name: 'slayerUnlocks',
     initialState: {
-        value: []
+        value: readFromStorageOrDefault(SLAYER_UNLOCKS_KEY, [])
     },
     reducers: {
         addSlayerUnlock: (state, action) => {
-            state.value = [...state.value, action.payload];
+            const slayerUnlocks = [...state.value, action.payload];
+
+            writeToStorage(SLAYER_UNLOCKS_KEY, slayerUnlocks);
+            state.value = slayerUnlocks;
         },
         removeSlayerUnlock: (state, action) => {
-            state.value = state.value.filter((task) => {
+            const slayerUnlocks = state.value.filter((task) => {
                 return task !== action.payload;
-            })
+            });
+
+            writeToStorage(SLAYER_UNLOCKS_KEY, slayerUnlocks);
+            state.value = slayerUnlocks;
         }
     }
 });
