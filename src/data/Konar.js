@@ -1,12 +1,28 @@
-export const Nieve = {
-    points: 12,
+export const Konar = {
+    points: 15,
     tasks: [
         {
-          name: 'TzHaar',
+          name: 'Drakes',
           weight: 10,
           combatLevel: 3,
-          slayerLevel: 1,
-          slayerUnlocks: [ 'Hot stuff' ],
+          slayerLevel: 84,
+          slayerUnlocks: [],
+          questRequirements: []
+        },
+        {
+          name: 'Hydras',
+          weight: 10,
+          combatLevel: 3,
+          slayerLevel: 95,
+          slayerUnlocks: [],
+          questRequirements: []
+        },
+        {
+          name: 'Wyrms',
+          weight: 10,
+          combatLevel: 3,
+          slayerLevel: 62,
+          slayerUnlocks: [],
           questRequirements: []
         },
         {
@@ -15,7 +31,7 @@ export const Nieve = {
           combatLevel: 85,
           slayerLevel: 85,
           slayerUnlocks: [],
-          questRequirements: []
+          questRequirements: [ 'Priest in Peril' ]
         },
         {
           name: 'Black demons',
@@ -32,6 +48,14 @@ export const Nieve = {
           slayerLevel: 50,
           slayerUnlocks: [],
           questRequirements: [ 'Priest in Peril' ]
+        },
+        {
+          name: 'Cave kraken',
+          weight: 9,
+          combatLevel: 80,
+          slayerLevel: 87,
+          slayerUnlocks: [],
+          questRequirements: []
         },
         {
           name: 'Fire giants',
@@ -54,7 +78,7 @@ export const Nieve = {
           weight: 8,
           combatLevel: 3,
           slayerLevel: 1,
-          slayerUnlocks: [ 'Like a boss' ],
+          slayerUnlocks: [ 'Like a Boss' ],
           questRequirements: []
         },
         {
@@ -82,22 +106,6 @@ export const Nieve = {
           questRequirements: []
         },
         {
-          name: 'Suqah',
-          weight: 8,
-          combatLevel: 85,
-          slayerLevel: 1,
-          slayerUnlocks: [],
-          questRequirements: [ 'Lunar Diplomacy' ]
-        },
-        {
-          name: 'Drakes',
-          weight: 7,
-          combatLevel: 3,
-          slayerLevel: 84,
-          slayerUnlocks: [],
-          questRequirements: []
-        },
-        {
           name: 'Greater demons',
           weight: 7,
           combatLevel: 75,
@@ -111,21 +119,13 @@ export const Nieve = {
           combatLevel: 85,
           slayerLevel: 80,
           slayerUnlocks: [],
-          questRequirements: []
+          questRequirements: [ 'Priest in Peril' ]
         },
         {
-          name: 'Smoke devil',
+          name: 'Smoke devils',
           weight: 7,
           combatLevel: 85,
           slayerLevel: 93,
-          slayerUnlocks: [],
-          questRequirements: []
-        },
-        {
-          name: 'Wyrms',
-          weight: 7,
-          combatLevel: 3,
-          slayerLevel: 62,
           slayerUnlocks: [],
           questRequirements: []
         },
@@ -135,22 +135,14 @@ export const Nieve = {
           combatLevel: 65,
           slayerLevel: 60,
           slayerUnlocks: [],
-          questRequirements: [ 'Priest in Peril' ]
+          questRequirements: []
         },
         {
-          name: 'Avianses',
+          name: 'Aviansies',
           weight: 6,
           combatLevel: 3,
           slayerLevel: 1,
           slayerUnlocks: [ 'Watch the birdie' ],
-          questRequirements: []
-        },
-        {
-          name: 'Basilisks',
-          weight: 6,
-          combatLevel: 3,
-          slayerLevel: 40,
-          slayerUnlocks: [ 'Basilocked' ],
           questRequirements: []
         },
         {
@@ -160,14 +152,6 @@ export const Nieve = {
           slayerLevel: 1,
           slayerUnlocks: [],
           questRequirements: [ 'Dragon Slayer I' ]
-        },
-        {
-          name: 'Cave kraken',
-          weight: 6,
-          combatLevel: 80,
-          slayerLevel: 87,
-          slayerUnlocks: [],
-          questRequirements: []
         },
         {
           name: 'Dust devils',
@@ -186,10 +170,10 @@ export const Nieve = {
           questRequirements: [ 'Priest in Peril' ]
         },
         {
-          name: 'Spiritual creatures',
+          name: 'Jellies',
           weight: 6,
-          combatLevel: 60,
-          slayerLevel: 63,
+          combatLevel: 57,
+          slayerLevel: 52,
           slayerUnlocks: [],
           questRequirements: []
         },
@@ -202,12 +186,12 @@ export const Nieve = {
           questRequirements: []
         },
         {
-          name: 'Vampyres',
-          weight: 6,
+          name: 'Adamant dragons',
+          weight: 5,
           combatLevel: 3,
           slayerLevel: 1,
-          slayerUnlocks: [ 'Actual Vampyre Slayer' ],
-          questRequirements: []
+          slayerUnlocks: [],
+          questRequirements: [ 'Dragon Slayer II' ]
         },
         {
           name: 'Ankou',
@@ -218,12 +202,20 @@ export const Nieve = {
           questRequirements: []
         },
         {
-          name: 'Cave horrors',
+          name: 'Basilisks',
           weight: 5,
-          combatLevel: 85,
-          slayerLevel: 58,
+          combatLevel: 3,
+          slayerLevel: 40,
+          slayerUnlocks: [ 'Basilocked' ],
+          questRequirements: []
+        },
+        {
+          name: 'Bronze dragons',
+          weight: 5,
+          combatLevel: 75,
+          slayerLevel: 1,
           slayerUnlocks: [],
-          questRequirements: [ 'Cabin Fever' ]
+          questRequirements: [ 'Dragon Slayer I' ]
         },
         {
           name: 'Dark beasts',
@@ -250,7 +242,7 @@ export const Nieve = {
           questRequirements: [ 'Dragon Slayer I' ]
         },
         {
-          name: 'Mith dragons',
+          name: 'Mithril dragons',
           weight: 5,
           combatLevel: 3,
           slayerLevel: 1,
@@ -260,10 +252,18 @@ export const Nieve = {
         {
           name: 'Red dragons',
           weight: 5,
-          combatLevel: 3,
+          combatLevel: 68,
           slayerLevel: 1,
           slayerUnlocks: [ 'Seeing red' ],
           questRequirements: [ 'Dragon Slayer I' ]
+        },
+        {
+          name: 'Rune dragons',
+          weight: 5,
+          combatLevel: 3,
+          slayerLevel: 1,
+          slayerUnlocks: [],
+          questRequirements: [ 'Dragon Slayer II' ]
         },
         {
           name: 'Skeletal Wyverns',
@@ -290,28 +290,12 @@ export const Nieve = {
           questRequirements: [ 'Dragon Slayer I' ]
         },
         {
-          name: 'Elves',
+          name: 'Vampyres',
           weight: 4,
-          combatLevel: 70,
+          combatLevel: 3,
           slayerLevel: 1,
-          slayerUnlocks: [],
-          questRequirements: [ 'Regicide' ]
-        },
-        {
-          name: 'Minions of scabaras',
-          weight: 4,
-          combatLevel: 85,
-          slayerLevel: 1,
-          slayerUnlocks: [],
-          questRequirements: [ 'Contact!' ]
-        },
-        {
-          name: 'Brine rats',
-          weight: 3,
-          combatLevel: 45,
-          slayerLevel: 47,
-          slayerUnlocks: [],
-          questRequirements: [ "Olaf's Quest" ]
+          slayerUnlocks: [ 'Actual Vampyre Slayer' ],
+          questRequirements: []
         },
         {
           name: 'Kurask',
@@ -330,15 +314,15 @@ export const Nieve = {
           questRequirements: []
         },
         {
-          name: 'Addy dragons',
+          name: 'Brine rats',
           weight: 2,
-          combatLevel: 3,
-          slayerLevel: 1,
+          combatLevel: 45,
+          slayerLevel: 47,
           slayerUnlocks: [],
-          questRequirements: [ 'Dragon Slayer II' ]
+          questRequirements: [ "Olaf's Quest" ]
         },
         {
-          name: 'Mutated zygomites',
+          name: 'Mutated Zygomites',
           weight: 2,
           combatLevel: 60,
           slayerLevel: 57,
@@ -346,12 +330,12 @@ export const Nieve = {
           questRequirements: [ 'Lost City' ]
         },
         {
-          name: 'Rune dragons',
+          name: 'Waterfiends',
           weight: 2,
-          combatLevel: 3,
+          combatLevel: 75,
           slayerLevel: 1,
           slayerUnlocks: [],
-          questRequirements: [ 'Dragon Slayer II' ]
+          questRequirements: []
         }
-      ]
+      ]      
 };

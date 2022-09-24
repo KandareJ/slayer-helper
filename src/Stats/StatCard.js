@@ -1,16 +1,21 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import List from '@mui/material/List';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Unstable_Grid2';
+import Checkbox from '@mui/material/Checkbox';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
 
-import { SLAYER_DATA } from '../data/SlayerData';
-import { filterTasks, sumWeights } from '../data/HelperFunctions';
+import { setMaster, clearMaster } from '../reducers/SecondarySlayerMasterReducer';
+import { getStats } from '../data/HelperFunctions';
 import { listsStyle, listContentSyle } from "../Form/styles";
 
 const StatCard = () => {
+    const dispatch = useDispatch();
     const master = useSelector((state) => state.slayerMaster.value);
+    const secondaryMaster = useSelector((state) => state.secondarySlayerMaster.value);
     const combatLevel = useSelector((state) => state.combatLevel.value);
     const slayerLevel = useSelector((state) => state.slayerLevel.value);
     const quests = useSelector((state) => state.quests.value);
@@ -18,27 +23,41 @@ const StatCard = () => {
     const blockList = useSelector((state) => state.blockList.value);
     const desiredTasks = useSelector((state) => state.desiredTasks.value);
     
-    const tasks = (master) ? 
-        filterTasks(SLAYER_DATA[master].tasks, combatLevel, slayerLevel, quests, unlocks, blockList)
-        : [];
+    const {
+        totalTasksWeight,
+        favoriteTasksWeight,
+        averagePointsPerTask,
+        averagePointsPerTenthTask
+    } = getStats({master, combatLevel, slayerLevel, quests, unlocks, blockList, desiredTasks});
 
-    const skipTasks = tasks.filter((task) => {
-        return !desiredTasks.includes(task.name);
-    });
+    const getTenthTask = () => {
+        if (secondaryMaster) {
+            const secondaryStats = getStats({
+                master: secondaryMaster,
+                combatLevel,
+                slayerLevel,
+                quests,
+                unlocks,
+                blockList,
+                desiredTasks,
+            });
+            return averagePointsPerTask * 9 + secondaryStats.averagePointsPerTenthTask;
+        }
+        else {
+            return averagePointsPerTask * 9 + averagePointsPerTenthTask;
+        }
+    };
 
-    const favoriteTasks = tasks.filter((task) => {
-        return desiredTasks.includes(task.name);
-    });
-
-    const skipsWeight = sumWeights(skipTasks);
-    const favoriteWeight = sumWeights(favoriteTasks);
-    let totalWeight = sumWeights(tasks);
-    totalWeight = (totalWeight) ? totalWeight : 1;
-    const pointsPerTask = (master) ? SLAYER_DATA[master].points : 0;
-
-    const calculatePtsPerTask = (perTask) => {
-        return (favoriteWeight / totalWeight * perTask) - (skipsWeight / totalWeight * 30)
-    }
+    const secondaryOnChanged = () => {
+        return (e) => {
+            if (secondaryMaster !== 'Konar') {
+                dispatch(setMaster('Konar'));
+            }
+            else {
+                dispatch(clearMaster());
+            }
+        };
+    };
 
     return (
         <div style={listsStyle}>
@@ -52,16 +71,7 @@ const StatCard = () => {
                             <ListItemText>Good tasks</ListItemText>
                         </Grid>
                         <Grid xs={4}>
-                            <ListItemText>{(favoriteWeight / totalWeight * 100).toFixed(2)}%</ListItemText>
-                        </Grid>
-                    </Grid>
-
-                    <Grid container spacing={2}>
-                        <Grid xs={8}>
-                            <ListItemText>Skip tasks</ListItemText>
-                        </Grid>
-                        <Grid xs={4}>
-                            <ListItemText>{(skipsWeight / totalWeight * 100).toFixed(2)}%</ListItemText>
+                            <ListItemText>{(favoriteTasksWeight / totalTasksWeight * 100).toFixed(2)}%</ListItemText>
                         </Grid>
                     </Grid>
 
@@ -70,7 +80,7 @@ const StatCard = () => {
                             <ListItemText>Pts per task</ListItemText>
                         </Grid>
                         <Grid xs={4}>
-                            <ListItemText>{calculatePtsPerTask(pointsPerTask).toFixed(2)}</ListItemText>
+                            <ListItemText>{averagePointsPerTask.toFixed(2)}</ListItemText>
                         </Grid>
                     </Grid>
 
@@ -79,7 +89,15 @@ const StatCard = () => {
                             <ListItemText>Pts per ten</ListItemText>
                         </Grid>
                         <Grid xs={4}>
-                            <ListItemText>{(calculatePtsPerTask(pointsPerTask) * 9 + calculatePtsPerTask(pointsPerTask * 5)).toFixed(2)}</ListItemText>
+                            <ListItemText>{getTenthTask().toFixed(2)}</ListItemText>
+                        </Grid>
+                    </Grid>
+
+                    <Grid container spacing={2}>
+                        <Grid xs={12}>
+                            <FormGroup>
+                                <FormControlLabel control={<Checkbox checked={secondaryMaster === 'Konar'} onChange={secondaryOnChanged()} />} label="Use Konar for 10th task" />
+                            </FormGroup>
                         </Grid>
                     </Grid>
                 </div>

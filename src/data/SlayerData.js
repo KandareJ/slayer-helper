@@ -1,9 +1,11 @@
 import { Nieve } from './Nieve';
 import { Duradel } from './Duradel';
+import { Konar } from './Konar';
 
 export const SLAYER_DATA = {
   Nieve,
-  Duradel
+  Duradel,
+  Konar
 };
 
 export const getUnlocks = (master) => {
