@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/slayer-helper/static/js/main.c55aae85.js",
+    "main.js": "/slayer-helper/static/js/main.85c36c59.js",
     "index.html": "/slayer-helper/index.html",
-    "main.c55aae85.js.map": "/slayer-helper/static/js/main.c55aae85.js.map"
+    "main.85c36c59.js.map": "/slayer-helper/static/js/main.85c36c59.js.map"
   },
   "entrypoints": [
-    "static/js/main.c55aae85.js"
+    "static/js/main.85c36c59.js"
   ]
 }
