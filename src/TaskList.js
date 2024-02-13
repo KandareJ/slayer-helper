@@ -15,6 +15,8 @@ import { SLAYER_DATA } from "./data/SlayerData";
 import { addBlockList } from "./reducers/BlockListReducer";
 import { addDesiredTask, removeDesiredTask } from "./reducers/DesiredTasksReducer";
 
+const MAX_BLOCKABLE_TASK_COUNT = 7;
+
 const TaskList = () => {
     const dispatch = useDispatch();
     const master = useSelector((state) => state.slayerMaster.value);
@@ -38,7 +40,7 @@ const TaskList = () => {
     };
 
     const getBlockButton = (task) => {
-        if (blockList.length < 5 && !desiredTasks.includes(task.name)) {
+        if (blockList.length < MAX_BLOCKABLE_TASK_COUNT && !desiredTasks.includes(task.name)) {
             return (
                 <Button variant="outlined" color="error" onClick={blockClicked(task)}>Block</Button>
             );
